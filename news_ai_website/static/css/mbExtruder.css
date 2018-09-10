@@ -1,0 +1,70 @@
+
+.extruder *{
+  box-sizing: content-box;
+}
+
+.extruder .extruder-content {
+  display: none;
+  background: #0D3C55
+}
+
+.extruder.right {
+  height: 100%;
+}
+
+.extruder.right .extruder-content {
+  border-left: 3px solid #0D3C55;
+}
+
+.extruder.right.open .extruder-content {
+  -moz-box-shadow: -2px 0 5px #999;
+  -webkit-box-shadow: -2px 0 5px #999;
+  box-shadow: -2px 0 5px #999
+}
+
+.extruder.right .ext_wrapper {
+  height: 100%;
+  right: 0
+}
+
+.extruder.right .footer {
+  display: none
+}
+
+.extruder.right .flap {
+  font-size: 18px;
+  color: white;
+  top: 0;
+  padding: 10px 0 10px 10px;
+  background: #0D3C55;
+  width: 30px;
+  position: absolute;
+  left: -37px;
+  -moz-border-radius: 8px 0 8px 0;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 0;
+  -moz-box-shadow: -2px 0 5px #105a82;
+  -webkit-box-shadow: -2px 0 5px #105a82;
+  box-shadow: -2px 0 5px #105a82;
+}
+
+.extruder.right .flap .flapLabel {
+  background: #0D3C55;
+}
+
+.extruder .text {
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  color: white;
+  padding: 10px;
+  text-shadow: 2px 2px 2px #333
+}
+
+:focus {
+  outline: 0
+}

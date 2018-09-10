@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+    {% block includes %}
+    <!--     <script src="{{ url_for('static', filename='js/analytics.js') }}"></script> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+    {% endblock %}
+{% set title = 'Analytics' %}
+
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+<div id="content" class="analytics">
+
+    <section id="container">
+        alert({{ requestedurl }})
+        <h2 id="mainpageTitle">Analytics {{ requestedurl }}</h2>
+        <p id="analytic-text">{{ requestedurl }}</p>
+
+    </section>
+
+</div>
+
+{% endblock %}
