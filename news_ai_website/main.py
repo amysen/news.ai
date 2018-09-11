@@ -6,22 +6,19 @@ from flask import Flask, request, jsonify, session, escape, redirect, abort
 from flask.helpers import url_for
 from flask.templating import render_template
 
+from Function_File import *
+from Analytics import *
+
+
 app = Flask(__name__)
 
 
 @app.route("/", methods=["POST", "GET"])
 def loadHome():
     try:
-        if request.method == 'POST':
-            print('posting to loadHome in main.py')
-            url = request.data
-            url = url.decode('utf-8')
-            url = json.loads(url)
-            url = url['url']
-            print(type(url))
-            return render_template("analytics.html", requestedurl = url)
+        if request.method == "POST":
+            return render_template('home.html')
         else:
-            print('comes here?')
             return render_template('home.html')
     except Exception as e:
         print("Error in homepage:", e)
@@ -36,15 +33,19 @@ def analyticsPage():
     try:
         if request.method == "POST":
             print('posting to analyticsPage in main.py')
-            print('RETURN DATA HERE')
-            # 
-            # data = request.data
-            # data = data.decode("utf-8")
-            # data = json.loads(data)
-            # return FetchGridData(data, Redact)
-            # 
-            test = 'passing yo shit kiko'
-            return test
+            # site = inputURL.split('//')[-1]
+
+
+            url = request.data
+            url = url.decode('utf-8')
+            url = json.loads(url)
+            url = url['url']
+
+
+            data = getArticleData(url)
+            data = json.dumps(data)
+
+            return data
         else:
             return render_template("analytics.html")
 
