@@ -1,6 +1,6 @@
 from newspaper import Article
 from newsapi import NewsApiClient
-from model import model
+import model
 import datetime
 import json
 import requests
