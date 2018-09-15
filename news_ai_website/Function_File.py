@@ -1,15 +1,16 @@
 from newspaper import Article
+from model import model
 import datetime
 import json
 
 # sudo pip install python-dateutil --upgrade
 
 
-def xzyggy():
+def xzyggy(domain, text, title):
 	
-    # empty function for later stuff for page.py pages you might need
+    m = model.get_model()
 
-    return bias_categories
+    return m.predict(m, title, text, publisher)
 
 
 def getArticleData(inputURL):
