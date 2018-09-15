@@ -40,8 +40,8 @@ def analyticsPage():
             url = url['url']
             
             data = getArticleData(url)
-            # prediction = kikosmodel(domain, text, title); 
-            print('DATA: ', data)
+            prediction = predict(data['domain'], data['text'], data['title'])
+            print('PREDICTION: ', prediction)
 
             domain = data['domain']
 
