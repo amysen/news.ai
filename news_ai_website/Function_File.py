@@ -6,7 +6,7 @@ import json
 # sudo pip install python-dateutil --upgrade
 
 
-def xzyggy(domain, text, title):
+def predict(domain, text, title):
 	
     m = model.get_model()
 
