@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import sklearn
-from model.project import getPolarityVector
+from model import getPolarityVector
 from keras.models import Model, Sequential
 from keras.layers import Dense, Dropout, Flatten, Activation
 from keras.models import load_model
