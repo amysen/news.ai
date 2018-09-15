@@ -1,10 +1,57 @@
 $(document).ready(function() {
 
-    // $.get('https://www.google.co.uk/search?biw=927&bih=701&tbm=nws&ei=At6cW72RFsjagAbf1ayYDw&q=trending+news+uk&oq=trending+news&gs_l=psy-ab.3.1.0l10.11660.15892.0.16932.24.19.1.4.4.0.84.964.18.19.0....0...1c.1.64.psy-ab..0.23.973.0...85.W42PjgnPsjQ', function(response) {                    
-    //     var followers = response;
-    //     console.log(followers);
-    // });
-
     console.log('hello');
 
 });
+
+
+function getData() {
+	console.log('inside trending');
+    $.ajax({
+        type: "POST",
+        url: window.location,
+        contentType: 'application/json'
+        
+    }).done(function (data) {
+
+        fillTrendingPage(data);
+        
+    });
+
+
+  function fillTrendingPage(data){
+  	console.log('HERE');
+    
+    data = JSON.parse(data);
+
+    // console.log(data)
+    var divCount = 1;
+    for (i = 0; i < 10; i++) { 
+	    console.log(data['articles'][i])
+	    $('#container').append("<div id='trending-"+divCount+"' class='list-group-item trending-story'></div>");
+	    $('#trending-'+divCount+'').append('<h5>'+ data['articles'][i]['title'] +'</h5>');
+	    $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['content'] +'</p>');
+	    // '+ data['articles'][i]['title'] +'
+	    // $('#container').find('li').append('<p id="trending-story" class="list-group-item">'+ data['articles'][i]['content'] +'</p>');
+	    divCount ++;
+	}
+
+  }
+
+
+ // var x = $.cookie("requested_url");
+
+ //    $.ajax({
+ //        type: "POST",
+ //        url: window.location,
+ //        data: JSON.stringify({
+ //           'url': x
+ //        }),
+ //        contentType: 'application/json',
+        
+ //    }).done(function (data) {
+        
+ //        fillAnalyticsPage(data);
+ //    });
+
+}

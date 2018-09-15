@@ -1,15 +1,18 @@
 from newspaper import Article
+from newsapi import NewsApiClient
 import datetime
 import json
+import requests
+
 
 # sudo pip install python-dateutil --upgrade
 
 
 def xzyggy():
-	
-    # empty function for later stuff for page.py pages you might need
 
-    return bias_categories
+	# empty function for later stuff for page.py pages you might need
+
+	return bias_categories
 
 
 def getArticleData(inputURL):
@@ -58,5 +61,15 @@ def getDomainBias(inputBias):
 
 	return biasDesc
 
-    
-    
+def googleTrending():
+	
+	newsapi = NewsApiClient(api_key='0ab40a5f5dd74064b0a0753b4ba6a32e')
+
+	top_headlines = newsapi.get_top_headlines(country='gb')
+
+	print(top_headlines)
+
+	return top_headlines
+
+	
+	
