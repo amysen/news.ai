@@ -40,15 +40,21 @@ def analyticsPage():
             url = url['url']
             
             data = getArticleData(url)
+            print('DATA: ', data)
+
             domain = data['domain']
 
             bias = getDomainData(domain)
-            print(bias)
-            biasVal = bias['bias']
+            print('BIAS: ', bias)
+            
+            if bias == None:
+                combinedData = {'articleData': data, 'biasData': bias}
+            else:
+                biasVal = bias['bias']
+                biasDesc = getDomainBias(biasVal)
+                combinedData = {'articleData': data, 'biasData': bias, 'biasDesc': biasDesc}
 
-            biasDesc = getDomainBias(biasVal)
-
-            combinedData = {'articleData': data, 'biasData': bias, 'biasDesc': biasDesc}
+            print('COMBINED DATA: ', combinedData)
             combinedData = json.dumps(combinedData)
 
             return combinedData
@@ -63,25 +69,22 @@ def analyticsPage():
         abort(500)
 
 
+@app.route("/trending", methods=["GET", "POST"])
+def trendingPage():
+    try:
+        if request.method == "POST":
 
+            test = 'hello'
+            return test
+        else:
+            return render_template("trending.html")
 
-
-
-
-# @app.route("/trending", methods=["GET", "POST"])
-# def trendingPage():
-#     try:
-#         if request.method == "POST":
-
-#         else:
-#             return render_template("trending.html")
-
-#     except Exception as e:
-#         print("Error in trending page:", e)
-#         traceback.print_exc()
-#         if request.method == "POST":
-#             return jsonify({'error':500})
-#         abort(500)
+    except Exception as e:
+        print("Error in trending page:", e)
+        traceback.print_exc()
+        if request.method == "POST":
+            return jsonify({'error':500})
+        abort(500)
 
 
 # @app.route("/history", methods=["GET", "POST"])

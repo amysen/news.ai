@@ -6,7 +6,8 @@ $(document).ready(function() {
 
     $('[data-toggle="popover"]').popover()
 
-    $('#domain-bias').hide();
+    // $('#chk').append('<h1 id="no-btn-domain">'+ biasData['name'] +'</h1>');
+    // $('#domain-bias').hide();no-btn-domain
 
 });
 
@@ -36,10 +37,17 @@ function fillAnalyticsPage(data){
 
     var articleData = data['articleData'];
     var biasData = data['biasData'];
-    var biasDesc = data['biasDesc'];
+
+    if (data['biasDesc'] != undefined){
+        var biasDesc = data['biasDesc'];
+    } else{
+        var biasDesc = {'name': 'Oh no!', 'description' : 'No information on this domain is avliable yet. Please check back later!'}
+    }
+    
+    
     console.log(articleData);
     console.log(biasData);
-    console.log(biasDesc);
+
     console.log(articleData['top_image']);
 
 
@@ -47,6 +55,11 @@ function fillAnalyticsPage(data){
     $('#container').find('span').css('background-color', 'white'); 
     $('#container').find('span').css('font-size', '40px'); 
     $('#container').find('span').css('font-weight', '500');
+
+    if (data['biasDesc'] == undefined){
+        $('#container').append('<h5 id="no-btn-domain">Source: '+ articleData['domain'] +'</h5>');
+        $('#no-btn-domain').css('margin-top', '3%');
+    } 
 
 
     $('#container').append('<p id="article-summary">' + articleData['summary'] + '</p>');
@@ -71,9 +84,14 @@ function fillAnalyticsPage(data){
     if (articleData['top_image'] != ''){
         $('#bg').css('background-image', 'url(' + articleData['top_image'] + ')'); 
         $('#bg').css('height', '50%'); 
-        $('#chk').append('<button type="button" class="btn btn-lg btn-danger check-btn" data-toggle="modal" data-target="#exampleModalCenter">Check ' + biasData['name'] + '</button>');
+        if (biasData != null){
+            $('#chk').append('<button type="button" class="btn btn-lg btn-danger check-btn" data-toggle="modal" data-target="#exampleModalCenter">Check ' + biasData['name'] + '</button>');
+        }
+        
     } else {
-        $('#container').append('<button type="button" class="btn btn-lg btn-danger check-btn" data-toggle="modal" data-target="#exampleModalCenter">Check ' + biasData['name'] + '</button>');
+        if (biasData != null){
+            $('#container').append('<button type="button" class="btn btn-lg btn-danger check-btn" data-toggle="modal" data-target="#exampleModalCenter">Check ' + biasData['name'] + '</button>');
+        }
     }
 
     
