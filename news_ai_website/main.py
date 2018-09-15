@@ -40,6 +40,7 @@ def analyticsPage():
             url = url['url']
             
             data = getArticleData(url)
+            # prediction = kikosmodel(domain, text, title); 
             print('DATA: ', data)
 
             domain = data['domain']
@@ -71,11 +72,22 @@ def analyticsPage():
 
 @app.route("/trending", methods=["GET", "POST"])
 def trendingPage():
+    
     try:
         if request.method == "POST":
+            trending = googleTrending()
 
-            test = 'hello'
-            return test
+            trending = json.dumps(trending)
+            return trending
+
+        # if request.method == "GET":
+        #     print('IN GET')
+        #     trending = googleTrending()
+
+        #     trending = json.dumps(trending)
+
+        #     return render_template("trending.html")
+
         else:
             return render_template("trending.html")
 

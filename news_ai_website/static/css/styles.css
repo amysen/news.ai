@@ -154,4 +154,10 @@ opacity: 0.5;
     color: #000000;
 }
 
+.trending .trending-story{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
 
