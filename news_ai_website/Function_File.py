@@ -10,7 +10,7 @@ def predict(domain, text, title):
 	
     m = model.get_model()
 
-    return m.predict(m, title, text, publisher)
+    return m.predict(m, title, text, domain)
 
 
 def getArticleData(inputURL):
