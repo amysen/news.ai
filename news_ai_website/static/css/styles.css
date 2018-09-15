@@ -15,7 +15,7 @@ a {
 html, body {
     height: 100%;
     margin: 0;
-    font-size: 16px !important;
+    font-size: 16px;
     font-family: 'Roboto', sans-serif !important;
     color:#686868 !important;
     font-weight:300 !important;
@@ -47,18 +47,26 @@ section .loader {
 }
 
 @media (max-width: 1490px){
-    #content{
-        margin-left: 150px;
-    }
+
+
 }
 
 @media (max-width: 1365px){
+    #chk{
+    margin-top: -7% !important;
+    }
 }
 
 @media (max-width: 835px){
+    #chk{
+    margin-top: -12% !important;
+    }
 }
 
 @media (max-width: 560px){
+    #chk{
+    margin-top: -14% !important;
+    }
 }
 
 /* HOME PAGE */
@@ -74,15 +82,20 @@ section .loader {
 
 
     position: absolute;
-    top: 20%;
+    top: 30%;
 }
 
 .home .dialogue .input-group{
-    display: -webkit-inline-box;
+    width: 35%;
+    margin: auto;
+    margin-top: 3%;
 }
 
 .home .dialogue .row{
     text-align: center;
+    margin-left:0px;
+    margin-right:0px;
+    display: block;
 }
 
 .home .dialogue .logo{
@@ -91,50 +104,54 @@ section .loader {
 }
 
 .home .dialogue .url-input{
-    padding-top: 30px;
+    float: none;
 }
 
-/* HEADER  */
-header {
-    border-top: 2px solid #0D3C55;
-    background-color: #FFFFFF;
-    width: 100%;
-    height: 72px;
-    position: relative;
-    z-index: 1;
+.home .caption{
+    margin-top: 1%;
 }
 
-header .nav a {
-    color: #8c8c8c !important;
-    padding: 0px 15px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    border-left: 1px solid #dedede;
-    border-bottom: 0px;
-    float: left;
-    line-height: 70px;
+   
+
+/* ANALYTICS  */
+#bg{
+
+/* Full height */
+height: 0; 
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+opacity: 0.5;
+
+
 }
 
-header .nav a:hover {
-    text-decoration: none;
-    background: rgba(0,0,0,0.05)
-}
-
-header .logo{
-    background: url("../images/logo.png") no-repeat center center;
-    background-size: contain;
-    width: 177px;
-    height:51px;
-    margin: 10px;
-    cursor: pointer;
-}
-
-header .nav a span {
-    background-image: url("../images/ui-icons_777777_256x240.png");
+#chk{
+    float: right;
+    margin-top: -5%;
+    margin-right: 5%;
+    position: sticky;
 }
 
 
+.analytics #container{
+    padding: 20px;
+}
 
+.analytics .check-btn{
+    float: right;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
 
+.analytics #article-summary {
+    font-size: 18px;
+    padding-top: 2%;
+    padding-right: 10%;
+    color: #000000;
+}
 
 

@@ -33,19 +33,25 @@ def analyticsPage():
     try:
         if request.method == "POST":
             print('posting to analyticsPage in main.py')
-            # site = inputURL.split('//')[-1]
-
 
             url = request.data
             url = url.decode('utf-8')
             url = json.loads(url)
             url = url['url']
-
-
+            
             data = getArticleData(url)
-            data = json.dumps(data)
+            domain = data['domain']
 
-            return data
+            bias = getDomainData(domain)
+            print(bias)
+            biasVal = bias['bias']
+
+            biasDesc = getDomainBias(biasVal)
+
+            combinedData = {'articleData': data, 'biasData': bias, 'biasDesc': biasDesc}
+            combinedData = json.dumps(combinedData)
+
+            return combinedData
         else:
             return render_template("analytics.html")
 

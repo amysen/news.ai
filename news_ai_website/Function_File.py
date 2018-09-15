@@ -3,7 +3,6 @@ import datetime
 import json
 
 # sudo pip install python-dateutil --upgrade
-bias_categories = ["right", "right-center", "left", "leftcenter", "center", "fake-news", "pro-science", "satire", "conspiracy"]
 
 
 def xzyggy():
@@ -24,9 +23,40 @@ def getArticleData(inputURL):
 
 	domain = inputURL.split('//')[-1].split('/')[0]
 
-	articleDict = {'full_url': inputURL,'domian': domain, 'authors': article.authors, 'title': article.title, 'text': article.text, 'top_image': article.top_image, 'keywords': article.keywords, 'summary': article.summary}
+	articleDict = {'full_url': inputURL,'domain': domain, 'authors': article.authors, 'title': article.title, 'text': article.text, 'top_image': article.top_image, 'keywords': article.keywords, 'summary': article.summary}
 
 	return articleDict
+
+
+def getDomainData(inputDomain):
+	json_data=open('bias.json')
+	jdata = json.load(json_data)
+
+	if (inputDomain[:4] == 'www.'):
+		inputDomain = inputDomain[4:]
+
+
+	result = jdata.get(inputDomain)
+
+
+	if result is None:
+		inputDomain = inputDomain.replace(".co.uk",".com")
+		result = jdata.get(inputDomain)
+
+	json_data.close()
+
+	return result
+
+
+def getDomainBias(inputBias):
+	json_data=open('bias_description.json');
+	jdata = json.load(json_data)
+	
+	biasDesc = jdata.get(inputBias)
+
+	json_data.close()
+
+	return biasDesc
 
     
     
