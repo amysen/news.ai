@@ -1,5 +1,5 @@
 from newspaper import Article
-from model import model
+import model
 import datetime
 import json
 
