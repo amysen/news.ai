@@ -1,5 +1,9 @@
 from newspaper import Article
+<<<<<<< HEAD
 from newsapi import NewsApiClient
+=======
+from model import model
+>>>>>>> 6020a7e9ed824a6a32bd9dd3263e232307e6af98
 import datetime
 import json
 import requests
@@ -8,11 +12,11 @@ import requests
 # sudo pip install python-dateutil --upgrade
 
 
-def xzyggy():
+def predict(domain, text, title):
+	
+    m = model.get_model()
 
-	# empty function for later stuff for page.py pages you might need
-
-	return bias_categories
+    return m.predict(m, title, text, domain)
 
 
 def getArticleData(inputURL):
