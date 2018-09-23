@@ -5,13 +5,13 @@ import json
 from flask import Flask, request, jsonify, session, escape, redirect, abort
 from flask.helpers import url_for
 from flask.templating import render_template
-
-from Function_File import *
-from Analytics import *
+import model.project
+from model.Function_File import *
+import Analytics
+from model.model import *
 
 
 app = Flask(__name__)
-
 
 @app.route("/", methods=["POST", "GET"])
 def loadHome():
@@ -40,20 +40,27 @@ def analyticsPage():
             url = url['url']
             
             data = getArticleData(url)
-            prediction = predict(data['domain'], data['text'], data['title'])
-            print('PREDICTION: ', prediction)
+            print(data['title'])
+            print(data['text'])
+            print(data['domain'])
+            model = get_model()
+            
 
             domain = data['domain']
 
             bias = getDomainData(domain)
             print('BIAS: ', bias)
+
+            prediction = predict(model, data['title'], data['text'], bias['homepage'])
+
+            prediction = "{0:.2f}".format(prediction[0][0] * 100)
             
             if bias == None:
-                combinedData = {'articleData': data, 'biasData': bias}
+                combinedData = {'articleData': data, 'biasData': bias, 'prediction': prediction}
             else:
                 biasVal = bias['bias']
                 biasDesc = getDomainBias(biasVal)
-                combinedData = {'articleData': data, 'biasData': bias, 'biasDesc': biasDesc}
+                combinedData = {'articleData': data, 'biasData': bias, 'biasDesc': biasDesc, 'prediction': str(prediction)}
 
             print('COMBINED DATA: ', combinedData)
             combinedData = json.dumps(combinedData)

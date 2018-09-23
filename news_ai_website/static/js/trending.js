@@ -30,7 +30,9 @@ function getData() {
 	    console.log(data['articles'][i])
 	    $('#container').append("<div id='trending-"+divCount+"' class='list-group-item trending-story'></div>");
 	    $('#trending-'+divCount+'').append('<h5>'+ data['articles'][i]['title'] +'</h5>');
+        $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['source']['name'] +'</p>');
 	    $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['content'] +'</p>');
+        $('#trending-'+divCount+'').append('<a href='+ data['articles'][i]['url'] +'>Link to article</a>');
 	    // '+ data['articles'][i]['title'] +'
 	    // $('#container').find('li').append('<p id="trending-story" class="list-group-item">'+ data['articles'][i]['content'] +'</p>');
 	    divCount ++;

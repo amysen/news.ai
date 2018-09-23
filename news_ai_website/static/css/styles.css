@@ -61,6 +61,7 @@ section .loader {
     #chk{
     margin-top: -12% !important;
     }
+    
 }
 
 @media (max-width: 560px){
@@ -158,6 +159,28 @@ opacity: 0.5;
     width: 80%;
     margin-left: 10%;
     margin-top: 3%;
+}
+
+#content #container .circle{
+    position: relative;
+    float: left;
+    width: 100px;
+    margin:5px 10px;
+}
+
+#content #container p {
+    font-weight: 300;
+    margin-top: 6%;
+}
+
+#content #container #article-prediction {
+    margin-top: 3%;
+    float: right;
+    margin-right: 10%;
+}
+
+#content #container .circle .circles-text{
+    font-size: 30px !important;
 }
 
 

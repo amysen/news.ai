@@ -26,9 +26,23 @@ function getData() {
     }).done(function (data) {
         
         fillAnalyticsPage(data);
+
     });
 
 }
+
+// function buildCircle()
+// {
+//     circles.push(Circles.create({
+//         id:         1,
+//         value:      27,
+//         radius:     50,
+//         width:      10,
+//         colors:     ['#E5E5E5', '#50BAB5'],
+//         text:       27 + '%', 
+//     }));
+
+// }
 
 function fillAnalyticsPage(data){
     console.log('HERE');
@@ -37,6 +51,7 @@ function fillAnalyticsPage(data){
 
     var articleData = data['articleData'];
     var biasData = data['biasData'];
+    var prediction = data['prediction'];
 
     if (data['biasDesc'] != undefined){
         var biasDesc = data['biasDesc'];
@@ -61,7 +76,8 @@ function fillAnalyticsPage(data){
         $('#no-btn-domain').css('margin-top', '3%');
     } 
 
-
+    $('#container').append('<h4 id="article-prediction">Prediction: '+ prediction +'% Biased</h4>');
+    $('#article-prediction').css('color', '#dc3545');
     $('#container').append('<p id="article-summary">' + articleData['summary'] + '</p>');
 
 
@@ -76,6 +92,7 @@ function fillAnalyticsPage(data){
 
     } 
     console.log(articleData['full_url'])
+
     $('#container').append('<a id="source-link" href=' + articleData['full_url'] + '></a>');
     $('#source-link').text('Original Article');
 

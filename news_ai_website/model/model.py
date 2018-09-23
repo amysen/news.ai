@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import sklearn
-from project import getPolarityVector
+import model.project as project
 from keras.models import Model, Sequential
 from keras.layers import Dense, Dropout, Flatten, Activation
 from keras.models import load_model
@@ -12,8 +12,8 @@ from urllib.parse import urlparse
 def predict(model, title, text, publisher):
 
     publishers = pd.read_csv('publishers.csv')
-    title_vector = getPolarityVector(title, title=True).reshape((-1, 1))
-    text_vector = getPolarityVector(text).reshape((-1, 1))
+    title_vector = project.getPolarityVector(title, title=True).reshape((-1, 1))
+    text_vector = project.getPolarityVector(text).reshape((-1, 1))
     index = 0
     
     for p in publishers.keys():
@@ -34,6 +34,7 @@ def predict(model, title, text, publisher):
         print ('exists')
     
     vector = np.concatenate((publisher_vector, text_vector, title_vector))
+    print (vector)
     return model.predict(vector.T)
 
 def get_model():
@@ -47,5 +48,5 @@ def get_model():
     model.add(Dropout(0.5))
     model.add(Dense(2, activation='softmax'))
     model.compile(loss='mean_squared_error', optimizer='adamax', metrics=['accuracy'])
-    model = load_model('deep_net_config_1.hdf5')
-    return model
+
+    return load_model('deep_net_config_1.hdf5')
