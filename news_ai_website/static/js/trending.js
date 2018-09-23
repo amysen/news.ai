@@ -1,29 +1,11 @@
 $(document).ready(function() {
 
-    console.log('hello');
-
-    // $("[type='submit']").keypress(function(e) {
-    //     console.log("key pressed");
-    //     e.preventDefault();
-    //     console.log($("#getBias"));
-        
-    // });
-
-    $(document).on("submit", "form", function(e){
+    $(document).on("submit", "#viewBias", function(e){
         e.preventDefault();
         $form = $(this);
         url = $form.attr('action');
-        console.log(url);
-        // console.log($("#getBias").attr("action"));
 
         $.cookie("requested_url", url, { expires: 365 });
-
-        // console.log($.cookie("requested_url"));
-
-
-        // url_input = $("#content").parent().find("div").find(".url-input")[1].value
-
-        // $.cookie("requested_url", url, { expires: 365 });
 
         window.location.href = "/analytics";  
     });
@@ -77,8 +59,8 @@ function fillTrendingPage(data){
         $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['source']['name'] +'</p>');
         $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['content'] +'</p>');
         // $('#trending-'+divCount+'').append('<a href='+ data['articles'][i]['url'] +'>Link to article</a>');
-        $('#trending-'+divCount+'').append('<form action="'+ data['articles'][i]['url'] +'"><input type="submit" value="View Original Article" /></form>');
-        $('#trending-'+divCount+'').append('<form id="getBias'+[i]+'" action="'+ data['articles'][i]['url'] +'"><input type="submit" value="View Bias Prediction" /></form>');
+        $('#trending-'+divCount+'').append('<form id="viewArticle" action="'+ data['articles'][i]['url'] +'"><input type="submit" value="View Original Article" /></form>');
+        $('#trending-'+divCount+'').append('<form id="viewBias" action="'+ data['articles'][i]['url'] +'"><input type="submit" value="View Bias Prediction" /></form>');
         // '+ data['articles'][i]['title'] +'
         // $('#container').find('li').append('<p id="trending-story" class="list-group-item">'+ data['articles'][i]['content'] +'</p>');
         divCount ++;

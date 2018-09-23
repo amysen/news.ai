@@ -10,6 +10,7 @@ import Analytics
 from model.model import AnalyticsModel
 
 app = Flask(__name__)
+print('builds model')
 model = AnalyticsModel('model/deep_net_config_1.hdf5')
 
 
@@ -39,7 +40,7 @@ def analyticsPage():
     homepage = ""
     try:
         if request.method == "POST":
-
+            
             print('posting to analyticsPage in main.py')
 
             url = request.data
@@ -55,13 +56,15 @@ def analyticsPage():
 
             bias = getDomainData(domain)
             print('BIAS: ', bias)
-            homepage = bias['homepage']
-            prediction = model.predict(title, text, homepage)
-            prediction = "{0:.2f}".format(prediction[0][0] * 100)
-
+            
             if bias == None:
+                prediction = model.predict(title, text, homepage)
+                prediction = "{0:.2f}".format(prediction[0][0] * 100)
                 combinedData = {'articleData': data, 'biasData': bias, 'prediction': prediction}
             else:
+                homepage = bias['homepage']
+                prediction = model.predict(title, text, homepage)
+                prediction = "{0:.2f}".format(prediction[0][0] * 100)
                 biasVal = bias['bias']
                 biasDesc = getDomainBias(biasVal)
                 combinedData = {'articleData': data, 'biasData': bias, 'biasDesc': biasDesc, 'prediction': str(prediction)}
