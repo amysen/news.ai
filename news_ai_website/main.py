@@ -79,22 +79,14 @@ def analyticsPage():
 
 @app.route("/trending", methods=["GET", "POST"])
 def trendingPage():
-    
+    print('hello')
     try:
+        
         if request.method == "POST":
             trending = googleTrending()
 
             trending = json.dumps(trending)
             return trending
-
-        # if request.method == "GET":
-        #     print('IN GET')
-        #     trending = googleTrending()
-
-        #     trending = json.dumps(trending)
-
-        #     return render_template("trending.html")
-
         else:
             return render_template("trending.html")
 
@@ -106,16 +98,18 @@ def trendingPage():
         abort(500)
 
 
+
+
 # @app.route("/history", methods=["GET", "POST"])
 # def historyPage():
 #     try:
 #         if request.method == "POST":
 
 #         else:
-#             return render_template("trending.html")
+#             return render_template("history.html")
 
 #     except Exception as e:
-#         print("Error in trending page:", e)
+#         print("Error in history page:", e)
 #         traceback.print_exc()
 #         if request.method == "POST":
 #             return jsonify({'error':500})

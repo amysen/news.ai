@@ -68,7 +68,7 @@ def googleTrending():
 
 	top_headlines = newsapi.get_top_headlines(country='gb')
 
-	print(top_headlines)
+	# print(top_headlines)
 
 	return top_headlines
 
