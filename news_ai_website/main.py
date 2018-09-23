@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
 import json
-
+import traceback
 from flask import Flask, request, jsonify, session, escape, redirect, abort
 from flask.helpers import url_for
 from flask.templating import render_template
-import model.project
 from model.Function_File import *
 import Analytics
-from model.model import *
-
+from model.model import AnalyticsModel
 
 app = Flask(__name__)
+model = AnalyticsModel('model/deep_net_config_1.hdf5')
+
 
 @app.route("/", methods=["POST", "GET"])
 def loadHome():
@@ -28,33 +28,37 @@ def loadHome():
         abort(500)
 
 
+@app.route("/compute", methods=["POST"])
+def compute_bias():
+    return;
+
 @app.route("/analytics", methods=["POST", "GET"])
 def analyticsPage():
+    title = ""
+    text = ""
+    homepage = ""
     try:
         if request.method == "POST":
+
             print('posting to analyticsPage in main.py')
 
             url = request.data
             url = url.decode('utf-8')
             url = json.loads(url)
             url = url['url']
-            
+
             data = getArticleData(url)
-            print(data['title'])
-            print(data['text'])
-            print(data['domain'])
-            model = get_model()
-            
+            title = data['title']
+            text = data['text']
 
             domain = data['domain']
 
             bias = getDomainData(domain)
             print('BIAS: ', bias)
-
-            prediction = predict(model, data['title'], data['text'], bias['homepage'])
-
+            homepage = bias['homepage']
+            prediction = model.predict(title, text, homepage)
             prediction = "{0:.2f}".format(prediction[0][0] * 100)
-            
+
             if bias == None:
                 combinedData = {'articleData': data, 'biasData': bias, 'prediction': prediction}
             else:
@@ -79,7 +83,7 @@ def analyticsPage():
 
 @app.route("/trending", methods=["GET", "POST"])
 def trendingPage():
-    
+
     try:
         if request.method == "POST":
             trending = googleTrending()
@@ -137,6 +141,5 @@ def refreshKey():
 app.secret_key = "a"
 
 if __name__ == "__main__":
-	app.debug=True
-	app.run(host="0.0.0.0", port=80)
-
+    app.debug=True
+    app.run(host="0.0.0.0", port=5000)
