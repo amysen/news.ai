@@ -53,14 +53,16 @@ function fillTrendingPage(data){
     // console.log(data)
     var divCount = 1;
     for (i = 0; i < 10; i++) { 
-        console.log(data['articles'][i]['url'])
+        // console.log(data['articles'][i]['url'])
+        // $('#grid-table').append('<tbody></tbody>');
         $('#container').append("<div id='trending-"+divCount+"' class='list-group-item trending-story'></div>");
         $('#trending-'+divCount+'').append('<h5>'+ data['articles'][i]['title'] +'</h5>');
         $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['source']['name'] +'</p>');
         $('#trending-'+divCount+'').append('<p>'+ data['articles'][i]['content'] +'</p>');
         // $('#trending-'+divCount+'').append('<a href='+ data['articles'][i]['url'] +'>Link to article</a>');
-        $('#trending-'+divCount+'').append('<form id="viewArticle" action="'+ data['articles'][i]['url'] +'"><input type="submit" value="View Original Article" /></form>');
-        $('#trending-'+divCount+'').append('<form id="viewBias" action="'+ data['articles'][i]['url'] +'"><input type="submit" value="View Bias Prediction" /></form>');
+        $('#trending-'+divCount+'').append('<form id="viewBias" action="'+ data['articles'][i]['url'] +'"><input type="submit" class="btn btn-lg btn-danger check-btn" value="Bias Prediction" /></form>');
+        $('#trending-'+divCount+'').append('<form id="viewArticle" action="'+ data['articles'][i]['url'] +'"><input type="submit" class="btn btn-lg btn-danger check-btn" value="Original Article" /></form>');
+        
         // '+ data['articles'][i]['title'] +'
         // $('#container').find('li').append('<p id="trending-story" class="list-group-item">'+ data['articles'][i]['content'] +'</p>');
         divCount ++;

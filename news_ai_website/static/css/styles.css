@@ -155,32 +155,66 @@ opacity: 0.5;
     color: #000000;
 }
 
+
+.analytics #container p {
+    font-weight: 300;
+    margin-top: 6%;
+}
+
+.analytics #container #article-prediction {
+    margin-top: 3%;
+    float: right;
+    margin-right: 10%;
+}
+
+
+
+
+/* TRENDING  */
+
+/*.trending #container {
+    position: relative;
+}*/
+
 .trending .trending-story{
     width: 80%;
     margin-left: 10%;
     margin-top: 3%;
+    /*height: 208px;*/
+    /*position: absolute;*/
 }
 
-#content #container .circle{
+.trending #container p {
+    font-weight: 300;
+}
+
+.trending #container #article-prediction {
+    margin-top: 3%;
+    float: right;
+    margin-right: 10%;
+}
+
+.trending #viewArticle, .trending #viewBias {
+    float: right;
+}
+
+.trending #viewArticle {
+    margin-right: 3%;
+}
+
+
+
+/* CIRCLES  */
+
+/*#content #container .circle{
     position: relative;
     float: left;
     width: 100px;
     margin:5px 10px;
 }
 
-#content #container p {
-    font-weight: 300;
-    margin-top: 6%;
-}
-
-#content #container #article-prediction {
-    margin-top: 3%;
-    float: right;
-    margin-right: 10%;
-}
-
 #content #container .circle .circles-text{
     font-size: 30px !important;
-}
+}*/
 
 
