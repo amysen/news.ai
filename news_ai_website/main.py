@@ -31,7 +31,7 @@ def loadHome():
 
 @app.route("/compute", methods=["POST"])
 def compute_bias():
-    return;
+    return
 
 @app.route("/analytics", methods=["POST", "GET"])
 def analyticsPage():
