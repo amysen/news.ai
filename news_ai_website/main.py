@@ -7,7 +7,7 @@ from flask.helpers import url_for
 from flask.templating import render_template
 from model.Function_File import *
 import Analytics
-from model.model import AnalyticsModel
+from model.AnalyticsModel import AnalyticsModel
 
 app = Flask(__name__)
 print('builds model')
